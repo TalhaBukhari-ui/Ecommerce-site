@@ -4,11 +4,11 @@ Technologies used: Python, Django, HTML, CSS, Bootstrap, Javascript
 
 Features:
 1) User Authentication
-1) Reset Password Functionality (code verification via email)
-2) Phone search funtionality
-3) Database connected in Backend
-4) Pagination feature
-5) 
+2) Reset Password Functionality (code verification via email)
+3) Phone search funtionality
+4) Database connected in Backend
+5) Pagination feature
+   
 
 After running migrations and migrating the DB one can seed the DB
 
