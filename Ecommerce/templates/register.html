@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %} Register {% endblock %}
+
+{% block content %}
+<h1 class="mx-auto mt-5" style="width: 500px;">Register</h1>
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-danger mx-auto mt-5" style="width: 500px;" role="alert">
+  {{message}}
+</div>
+{% endfor %}
+{% endif %}
+<form method="POST" class="mx-auto mt-5" style="width: 500px;">
+  {% csrf_token %}
+    <div class="mb-3">
+        <label for="firstname" class="form-label">First Name</label>
+        <input name="firstname" type="text" class="form-control" id="firstname" aria-describedby="fullnameHelp">
+      </div>
+      <div class="mb-3">
+        <label for="lastname" class="form-label">Last Name</label>
+        <input name="lastname" type="text" class="form-control" id="lastname" aria-describedby="fullnameHelp">
+      </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input type="email" name='email' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">  
+    </div>
+    <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input name="username" type="text" class="form-control" id="username" aria-describedby="usernameHelp">
+      </div>
+    <div class="mb-3">
+      <label for="Password1" class="form-label">Password</label>
+      <input name='password' type="password" class="form-control" id="Password1">
+    </div>
+    <div class="mb-3">
+      <label for="Password2" class="form-label">Confirm Password</label>
+      <input name='password2' type="password" class="form-control" id="Password2">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+{% endblock %}

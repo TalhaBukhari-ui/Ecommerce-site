@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Home Page
+{% endblock %}
+{% block content %}
+
+<!-- Pagination start -->
+
+<div style="margin-top: 10px;">
+  <ul class="pagination">
+      {% if page_obj.has_previous %}
+      <li class="page-item"><a href="?page=1" class="page-link">&laquo; first</a></li>
+      <li class="page-item"><a href="?page={{ page_obj.previous_page_number }}" class="page-link">previous</a></li>
+      {% endif %}
+
+      <li class="page-link">
+          Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+      </li>
+
+      {% if page_obj.has_next %}
+    <li class="page-item"><a href="?page={{ page_obj.next_page_number }}" class="page-link">next</a></li>
+    <li class="page-item"><a href="?page={{ page_obj.paginator.num_pages }}" class="page-link">last &raquo;</a></li>
+      {% endif %}
+  </ul>
+</div> 
+
+<!-- Pagination end -->
+
+<div style="display: flex;flex-direction: row;flex-wrap: wrap;">
+  
+
+{% for phone in page_obj %}
+<div class="card m-4 border-primary" style="width: 15rem;">
+    <img src="{{phone.image_path}}" target="_blank" class="card-img-top" alt="{{phone.name}}">
+    <div class="card-body">
+      <h5 class="card-title">{{phone.name}}</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><b>Rs {{phone.price}}</b></li>
+
+      {% if phone.rating == 1 %}
+      <li class="list-group-item"><span class="star" data-value="1">Rating:  <i class="fas fa-star"></i></span></li>
+        {% elif phone.rating == 2 %}
+        <li class="list-group-item"><span class="star" data-value="1">Rating: <i class="fas fa-star"></i></span>
+        <span class="star" data-value="2"><i class="fas fa-star"></i></span></li>
+        {% elif phone.rating == 3 %}
+        <li class="list-group-item"><span class="star" data-value="1">Rating: <i class="fas fa-star"></i></span>
+        <span class="star" data-value="2"><i class="fas fa-star"></i></span>
+        <span class="star" data-value="3"><i class="fas fa-star"></i></span></li>
+        {% elif phone.rating == 4 %}
+        <li class="list-group-item"><span class="star" data-value="1">Rating: <i class="fas fa-star"></i></span>
+        <span class="star" data-value="2"><i class="fas fa-star"></i></span>
+        <span class="star" data-value="3"><i class="fas fa-star"></i></span>
+        <span class="star" data-value="4"><i class="fas fa-star"></i></span></li>
+        {% elif phone.rating == 5 %}
+        <li class="list-group-item"><span class="star" data-value="1">Rating: <i class="fas fa-star"></i></span>
+        <span class="star" data-value="2"><i class="fas fa-star"></i></span>
+        <span class="star" data-value="3"><i class="fas fa-star"></i></span>
+        <span class="star" data-value="4"><i class="fas fa-star"></i></span>
+        <span class="star" data-value="5"><i class="fas fa-star"></i></span></li>
+        {% endif %}
+        
+      {% if phone.available %}  
+      <li class="list-group-item">Availability: <i style="color: green;">In Stock</i></li>
+      {% else %}
+      <li class="list-group-item">Availability: <i style="color: red;">Out of Stock</i></li>
+      {% endif %}
+      <li class="list-group-item"><a class="btn btn-success w-100" href="{% url 'cart' phone.id %}">Buy it now</a></li>
+      <li class="list-group-item">
+          <a href="{% url 'details' phone.name %}" class=" w-100 btn btn-info">View Details</a>
+    </li>
+    
+    </ul>
+  </div>
+
+{% endfor %}
+
+           
+  
+</div>
+
+{% endblock %}

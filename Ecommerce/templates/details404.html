@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ info.name }} Information{% endblock %}
+
+{% block content %}
+
+<div class="confirmation-card mt-3" style="border: 1px solid #ccc; padding: 20px; border-radius: 8px; width: 400px; margin: auto; background-color: #f9f9f9;">
+    <h3>{{ info.name }}</h3>
+    <center><img src="{{ info.image_path }}" alt="{{ info.name }}"></center>
+    <p><strong>Display:</strong> ----</p>
+    <p><strong>Resolution:</strong> ----</p>
+    <p><strong>Processor:</strong> ----</p>
+    <p><strong>RAM:</strong> ----</p>
+    <p><strong>Storage:</strong> ----</p>
+    <p><strong>Rear Camera:</strong> ----</p>
+    <p><strong>Front Camera:</strong> ----</p>
+    <p><strong>Battery:</strong> ----</p>
+    <p><strong>Operating System:</strong> ----</p>
+    <p><strong>Dimensions:</strong> ----</p>
+    <p><strong>Weight:</strong> ----</p>
+    <p><strong>Connectivity:</strong> ----</p>
+    <p><strong>Colors:</strong> ----</p>
+    <a href="{% url 'index' %}" class="btn btn-info w-100"><i class="fa fa-home" aria-hidden="true"></i> Back Home</a>
+</div>
+    
+</div>
+{% endblock %}

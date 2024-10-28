@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Confirm Order{% endblock %}
+
+{% block content %}
+
+<form method="post">
+{% csrf_token %}
+<div class="confirmation-card" style="border: 1px solid #ccc;padding: 20px; border-radius: 8px; width: 400px; margin: auto; background-color: #f9f9f9;">
+    <h3>Order Confirmation</h3>
+    <center><img src="{{customer.phone_id.image_path}}" target="_blank" alt="{{customer.phone_id.name}}"></center>
+    <p><strong>Full Name:</strong> {{ customer.customer_id.first_name }} {{ customer.customer_id.last_name }}</p>
+    <p><strong>Product Name:</strong> {{ customer.phone_id.name }}</p>
+    <p><strong>Address:</strong> {{ customer.customer_address }}</p>
+    <p><strong>City:</strong> {{ customer.customer_city }}</p>
+    <p><strong>ZIP Code:</strong> {{ customer.customer_zip_code }}</p>
+    <p><strong>Phone:</strong> {{customer.customer_phone}}</p>
+    <p><strong>Price:</strong> Rs {{customer.phone_id.price}}</p>
+    <p><strong>Order Date:</strong> {{customer.order_date}}</p>
+
+    <input type="submit" name="confirm" value="Confirm Order" class="btn btn-success w-100">
+    <input type="submit" name="cancel" value="Cancel Order" class="btn btn-danger w-100 mt-2">
+</div>
+</form>
+{% endblock %}

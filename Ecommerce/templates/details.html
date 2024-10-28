@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ info.phone_id.name }} Information{% endblock %}
+
+{% block content %}
+
+<div class="confirmation-card mt-3" style="border: 1px solid #ccc; padding: 20px; border-radius: 8px; width: 400px; margin: auto; background-color: #f9f9f9;">
+    <h3>{{ info.model }}</h3>
+    <center><img src="{{ info.phone_id.image_path }}" alt="{{ info.phone_id.name }}"></center>
+    <p><strong>Display:</strong> {{ info.display }}</p>
+    <p><strong>Resolution:</strong> {{ info.resolution }}</p>
+    <p><strong>Processor:</strong> {{ info.processor }}</p>
+    <p><strong>RAM:</strong> {{ info.ram }}</p>
+    <p><strong>Storage:</strong> {{ info.storage }}</p>
+    <p><strong>Rear Camera:</strong> {{ info.rear_camera }}</p>
+    <p><strong>Front Camera:</strong> {{ info.front_camera }}</p>
+    <p><strong>Battery:</strong> {{ info.battery }}</p>
+    <p><strong>Operating System:</strong> {{ info.operating_system }}</p>
+    <p><strong>Dimensions:</strong> {{ info.dimensions }}</p>
+    <p><strong>Weight:</strong> {{ info.weight }}</p>
+    <p><strong>Connectivity:</strong> {{ info.connectivity }}</p>
+    <p><strong>Colors:</strong> {{ info.colors }}</p>
+    <a href="{% url 'index' %}" class="btn btn-info w-100"><i class="fa fa-home" aria-hidden="true"></i> Back Home</a>
+</div>
+    
+</div>
+{% endblock %}
